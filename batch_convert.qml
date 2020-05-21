@@ -407,6 +407,11 @@ MuseScore {
                 text: "*.mp3"
                 tooltip: qsTranslate("Ms::MuseScore", "MP3 Audio")
                 }
+              CheckBox {
+                id: outMeta
+                text: "*.metajson"
+                tooltip: qsTranslate("Ms::MuseScore", "Score Metadata")
+                }
               } //Column
             } //outFormats
           } // RowLayout
@@ -510,6 +515,7 @@ MuseScore {
     property alias outFlac: outFlac.checked
     property alias outOgg:  outOgg.checked
     property alias outMp3:  outMp3.checked
+    property alias outMeta: outMeta.checked
     // other options
     property alias exportE: exportExcerpts.checked
     property alias travers: traverseSubdirs.checked
@@ -567,7 +573,7 @@ MuseScore {
     outMscz.checked = outMscx.checked = outXml.checked = outMusicXml.checked = outMxl.checked =
       outMid.checked = outMidi.checked = outPdf.checked = outPs.checked = outPng.checked =
       outSvg.checked = outLy.checked = outWav.checked = outFlac.checked =
-      outOgg.checked = outMp3.checked = false
+      outOgg.checked = outMp3.checked = outMeta.checked = false
     traverseSubdirs.checked = false
     exportExcerpts.checked = false
     // 'uncheck' everything, then 'check' the next few
@@ -622,6 +628,7 @@ MuseScore {
     if (outFlac.checked) outFormats.extensions.push("flac")
     if (outOgg.checked)  outFormats.extensions.push("ogg")
     if (outMp3.checked)  outFormats.extensions.push("mp3")
+    if (outMeta.checked)  outFormats.extensions.push("metajson")
     if (!outFormats.extensions.length)
       console.log("No output format selected")
 
